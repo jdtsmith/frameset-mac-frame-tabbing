@@ -38,8 +38,9 @@ Though not really related to this package, a simple way to easily switch among m
     (interactive
      (list
       (completing-read "Load Desktop: "
-		       (remove "." (remove ".."
-					   (directory-files desktop-base-dir))))))
+		       (cl-remove-if
+			(lambda (x) (string-match-p "^\.\.?$" x))
+			(directory-files desktop-base-dir)))))
     (desktop-change-dir (expand-file-name name desktop-base-dir)))
   
   (defun my-desktop-save (name)
