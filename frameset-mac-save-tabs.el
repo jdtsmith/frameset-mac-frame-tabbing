@@ -4,11 +4,13 @@
 ;; Enable framesets to save and restore frame tab groups.  Advises
 ;; frameset-save (to add a 'mac-frame-tab-group frame property),
 ;; frameset--restore-frame (to enable or disable tabbing on frame
-;; creation), frameset--minibufferless-last-p (to sort frames into tab
-;; order), and frameset-restore (to reunite any tabs that didn't get
-;; placed together).
+;; creation), frameset--minibufferless-last-p (to pre-sort frames into
+;; group/tab order), and frameset-restore (to reunite any tabs that
+;; didn't get placed together, e.g. minibufferless frames that have to
+;; be restored after their minibuffer host.).
 
 ;; (c) 2020 J.D. Smith
+;; 
 
 ;; Add information on tab groups to frame parameters before saving
 (defun frameset-mac-record-tabs (frame-list &rest rest)
